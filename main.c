@@ -1,15 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "header.c"
-#include "functions.h"
+#include "header.h"
 
 int main() {
 
-  int fila, escolha, subescolha, carrosatendidos = 0, capacidade = 0,
-                                 carrosnabastecer = 0, n = 1;
-  float gasprice = 0, lbomba = 0, labastecer = 0, labastecido = 0,
-        lbombaresto = 0;
+  int fila, escolha, subescolha, carrosatendidos = 0, capacidade = 0, carrosnabastecer = 0, n = 1;
+  float gasprice = 0, lbomba = 0, labastecer = 0, labastecido = 0, lbombaresto = 0;
   int cont;
   struct Tcarro *filam, *filaf;
   char clscr;
@@ -171,7 +168,7 @@ int main() {
 
         for (cont = 0; cont < fila; cont++) {
 
-          printf(CYN "\n\tCarro úmero %d\n\n", cont + 1);
+          printf(CYN "\n\tCarro número %d\n\n", cont + 1);
           printf("\n\t Ano do veículo: %d \n\t Porte do veículo: %d\n\t Cor do veículo: %s\n\n" WHT,
                  filam[cont].ano, filam[cont].porte, filam[cont].cor);
         }
@@ -235,7 +232,7 @@ int main() {
         case (5):
           printf("\n\t Arquivo geral dos relatórios:");
           arquivogen(labastecido, lbombaresto, gasprice, carrosatendidos,
-                     capacidade, lbomba, carrosnabastecer);
+                     capacidade, lbomba, carrosnabastecer, filam, filaf, fila);
           break;
 
         case (6):
@@ -260,4 +257,3 @@ int main() {
 
   return 0;
 }
-

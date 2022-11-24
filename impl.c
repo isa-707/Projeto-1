@@ -1,20 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "header.h"
 
 /// ARQUIVO ///
 
-int arquivogen(float labastecido, float lbombaresto, float gasprice,
+void arquivogen(float labastecido, float lbombaresto, float gasprice,
                int carrosatendidos, int capacidade, float lbomba,
-               int carrosnabastecer) {
+               int carrosnabastecer, struct Tcarro filam[], struct Tcarro filaf[], int fila) {
 
   FILE *fp;
 
   fp = fopen("relatorio.txt", "w");
 
-  fprintf(
-      fp,
-      "\t ///Arquivo geral de relatórios///\n\n Valor do combustível: %f \n "
+  fprintf(fp, "\n\t ///Arquivo geral de relatórios///\n\n Valor do combustível: %f \n "
       "Tamanho de fila suportada: %d \n Quantidade de litros inicial na bomba: "
       "%f \n\n \t ///Subrelatórios/// \n\n Quantidade de litros vendida: "
       "%.2f\n "
@@ -25,9 +24,24 @@ int arquivogen(float labastecido, float lbombaresto, float gasprice,
       gasprice, capacidade, lbomba, labastecido, labastecido * gasprice,
       carrosatendidos, carrosnabastecer, lbombaresto);
 
+  fprintf(fp, "\n\n==============================================\n");
+
+  fprintf(fp, "\n\t /// Carros na fila /// \n");
+  for (int cont = 0; cont < fila; cont ++){
+    fprintf(fp, "\n\tCarro número %d\n", cont + 1);
+    fprintf(fp, "\n\t Ano do veículo: %d \n\t Porte do veículo: %d\n\t Cor do veículo: %s\n\n",
+                 filam[cont].ano, filam[cont].porte, filam[cont].cor);
+  }
+
+  fprintf(fp, "\n\t /// Carros atendidos /// \n");
+  for (int cont = 0; cont < carrosatendidos; cont ++){
+    fprintf(fp, "\n\tCarro número %d\n", cont + 1);
+    fprintf(fp, "\n\t Ano do veículo: %d \n\t Porte do veículo: %d\n\t Cor do veículo: %s\n\n",
+                 filaf[cont].ano, filaf[cont].porte, filaf[cont].cor);
+  }
+  
   fclose(fp);
 
-  return 0;
 }
 
 /// MENSAGEM DE VALOR INVALIDO ///
