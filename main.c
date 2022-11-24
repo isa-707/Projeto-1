@@ -33,7 +33,7 @@ int main() {
 
   // MAX FILA DE CARROS
   while (capacidade <= 0) {
-    printf("Numero de carros que podem ficar na fila\n");
+    printf("Número de carros que podem ficar na fila\n");
     scanf("%d", &capacidade);
 
     if (capacidade <= 0) {
@@ -79,8 +79,7 @@ int main() {
     case (1):
 
       if (lbombaresto == 0) {
-        printf(RED "\nNao ha combustivel restante na bomba, nao e possivel "
-                   "admitir mais carros\n" WHT);
+        printf(RED "\nNão há combustível restante na bomba, não é possível admitir mais carros\n" WHT);
       } else {
         if (fila < capacidade) {
 
@@ -88,11 +87,10 @@ int main() {
 
           fila++;
 
-          printf(CYN "\n\t Carro adicionado na fila | Numero de carros "
-                     "restantes %d" WHT,
+          printf(CYN "\n\t Carro adicionado na fila | Número de carros em espera %d" WHT,
                  fila);
         } else {
-          printf(RED "\n\tA fila esta cheia" WHT);
+          printf(RED "\n\tA fila está cheia" WHT);
         }
       }
 
@@ -100,11 +98,16 @@ int main() {
 
     case (2):
 
-      if (fila > 0) {
+    if (fila == 0) {
 
-        if (lbombaresto == 0) {
-          printf(RED "\n\t Sem combustivel restante na bomba\n" WHT);
-          printf("\n\t O restante dos carros serao liberados\n");
+    printf(CYN "Nenhum carro na fila" WHT);
+    
+    }
+    else{
+      if (lbombaresto == 0) {
+        
+          printf(RED "\n\t Sem combustível restante na bomba\n" WHT);
+          printf("\n\t O restante dos carros serão liberados\n");
 
           for (cont = 0; cont <= fila; cont++) {
 
@@ -118,22 +121,21 @@ int main() {
             carrosnabastecer++;
           }
           fila = 0;
-        }
-
-        else {
-          printf("\n\t O carro recebera quantos litros de combustivel?\n");
+      }
+      else{
+          printf("\n\t O carro receberá quantos litros de combustível?\n");
           scanf("%f", &labastecer);
 
-          getchar(); // Funcao adicionada para nao entrar em conflito com o
-                     // clscr no comeco do while
-
-          if (labastecer > lbombaresto) {
-            printf(RED "\n\tNao ha combustivel suficiente na bomba, "
-                       "combustivel restante %.1f \n" WHT,
-                   lbombaresto);
+          getchar(); // Funcao adicionada para nao entrar em conflito com o clscr no comeco do while
+        
+        if (labastecer > lbombaresto) {
+          
+            printf(RED "\n\t Não há combustível suficiente na bomba, combustível restante %.1f \n" WHT, lbombaresto);
+          
           }
+          else{
 
-          if (labastecer > 0 && labastecer <= lbombaresto) {
+            if (labastecer > 0 && labastecer <= lbombaresto) {
 
             filaf[carrosatendidos] = filam[0];
 
@@ -149,24 +151,18 @@ int main() {
 
             labastecido += labastecer;
             lbombaresto -= labastecer;
-            printf(CYN
-                   "\n\t Carro atendido | Carros restantes na fila %d\n" WHT,
-                   fila);
-          }
-
-          else {
-            mensagem1();
+            printf(CYN "\n\t Carro atendido | Carros restantes na fila %d\n" WHT, fila);
+              }
+              else {
+              mensagem1();
+              }
           }
         }
+            
+        }
 
-      }
-
-      else {
-        printf(CYN "Nenhum carro na fila" WHT);
-      }
-
-      break;
-
+    break;
+      
     case (3):
 
       printf("\n\t Carros na fila de espera %d\n", fila);
@@ -175,9 +171,8 @@ int main() {
 
         for (cont = 0; cont < fila; cont++) {
 
-          printf(CYN "\n\tCarro numero %d\n\n", cont + 1);
-          printf("\n\t Ano do veiculo: %d \n\t Porte do veiculo: %d\n\t Cor do "
-                 "veiculo: %s\n\n" WHT,
+          printf(CYN "\n\tCarro úmero %d\n\n", cont + 1);
+          printf("\n\t Ano do veículo: %d \n\t Porte do veículo: %d\n\t Cor do veículo: %s\n\n" WHT,
                  filam[cont].ano, filam[cont].porte, filam[cont].cor);
         }
       }
@@ -223,9 +218,9 @@ int main() {
 
             for (cont = 0; cont < carrosatendidos; cont++) {
 
-              printf(CYN "\n\tCarros numero %d\n", cont + 1);
-              printf("\n\t Ano do veiculo: %d \n\t Porte do veiculo: %d\n\t "
-                     "Cor do veiculo: %s\n\n" WHT,
+              printf(CYN "\n\tCarros número %d\n", cont + 1);
+              printf("\n\t Ano do veículo: %d \n\t Porte do veículo: %d\n\t "
+                     "Cor do veículo: %s\n\n" WHT,
                      filaf[cont].ano, filaf[cont].porte, filaf[cont].cor);
             }
           }
@@ -238,7 +233,7 @@ int main() {
           break;
 
         case (5):
-          printf("\n\t Arquivo geral dos relatorios:");
+          printf("\n\t Arquivo geral dos relatórios:");
           arquivogen(labastecido, lbombaresto, gasprice, carrosatendidos,
                      capacidade, lbomba, carrosnabastecer);
           break;
@@ -248,7 +243,7 @@ int main() {
           break;
 
         default:
-          printf(BRED "\n\t Escolha nao reconhecida." WHT);
+          printf(BRED "\n\t Escolha não reconhecida." WHT);
         }
       }
       break;
@@ -258,7 +253,7 @@ int main() {
       break;
 
     default:
-      printf(BRED "\n\t Escolha nao reconhecida." WHT);
+      printf(BRED "\n\t Escolha não reconhecida." WHT);
       clscr = getchar();
     }
   }

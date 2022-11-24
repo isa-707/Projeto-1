@@ -14,14 +14,14 @@ int arquivogen(float labastecido, float lbombaresto, float gasprice,
 
   fprintf(
       fp,
-      "\t ///Arquivo geral de relatorios///\n\n Valor do combustivel: %f \n "
+      "\t ///Arquivo geral de relatórios///\n\n Valor do combustível: %f \n "
       "Tamanho de fila suportada: %d \n Quantidade de litros inicial na bomba: "
-      "%f \n\n \t ///Subrelatorios/// \n\n Quantidade de litros vendida: "
+      "%f \n\n \t ///Subrelatórios/// \n\n Quantidade de litros vendida: "
       "%.2f\n "
       "Valor total arrecadado de vendas: %.2f\n Quantidade de carros "
       "atendidos: "
-      "%d\n Carros atendidos sem abastecer (falta combustivel na bomba): %d \n "
-      "Quantidade de combustivel restante no tanque: %.2f",
+      "%d\n Carros atendidos sem abastecer (falta combustível na bomba): %d \n "
+      "Quantidade de combustível restante no tanque: %.2f",
       gasprice, capacidade, lbomba, labastecido, labastecido * gasprice,
       carrosatendidos, carrosnabastecer, lbombaresto);
 
@@ -33,7 +33,7 @@ int arquivogen(float labastecido, float lbombaresto, float gasprice,
 /// MENSAGEM DE VALOR INVALIDO ///
 
 void mensagem1() {
-  printf(RED "Valor invalido \n" WHT);
+  printf(RED "\nValor inválido \n" WHT);
   printf("Tente novamente\n\n");
 }
 
@@ -41,15 +41,15 @@ struct Tcarro criaCarro() {
 
   struct Tcarro aux;
 
-  printf("\nAno do veiculo:\n");
+  printf("\nAno do veículo:\n");
   scanf("%d", &aux.ano);
 
-  printf("\nSelecione o porte do veiculo:\n\n 1 - Pequeno (motos)\n 2 - Medio "
-         "(carros)\n 3 - Grande (caminhao)\n");
+  printf("\nSelecione o porte do veículo:\n\n 1 - Pequeno (motos)\n 2 - Médio "
+         "(carros)\n 3 - Grande (caminhão)\n");
   scanf("%d", &aux.porte);
   getchar();
 
-  printf("\nCor do veiculo:\n");
+  printf("\nCor do veículo:\n");
   fgets(aux.cor, 20, stdin);
   aux.cor[strcspn(aux.cor, "\n")] = 0;
 
